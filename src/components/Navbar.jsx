@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { styles } from '../styles';
 import { navLinks } from '../constants';
-import { logo, menu, close } from '../assets';
+import { leologotwo, menu, close } from '../assets';
+
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -20,7 +21,8 @@ const Navbar = () => {
             setActive("");
             window.scrollTo(0, 0);
           }}>
-          <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
+          <img src={leologotwo} alt="leo-logo" className="w-9 h-9 object-cover" />
+
         </Link>
       </div>
     </nav>
