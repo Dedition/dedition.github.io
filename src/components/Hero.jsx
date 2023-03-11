@@ -14,7 +14,7 @@ const Hero = () => {
         <div>
           <h1 className={`${styles.heroHeadText} text-white`}>Hi, I'm <span className="text-[#915eff]">Leo</span> </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            As a Full-Stack Software Engineer, I excel in crafting seamless user <br className="sm:block hidden" /> interfaces, developing cutting-edge web applications, and <br className="sm:block hidden" />handling all your SQL requirements <br className="sm:block hidden" />with ease.
+            Software Engineer who develops seamless user <br className="sm:block hidden" /> interfaces, cutting-edge web applications and efficient SQL databases
           </p>
         </div>
       </div>
@@ -40,4 +40,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default Hero;
