@@ -5,6 +5,12 @@ import { styles } from '../styles';
 import { services } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 
+const ServiceCard = ({ index, title, icon }) => {
+  return (
+    <p>{title}</p>
+  )
+}
+
 const About = () => {
   return (
     <>
@@ -29,6 +35,13 @@ const About = () => {
         I pride myself on being a fast learner and have experience in client-facing roles dealing with stakeholders and high-profile clients.
         Let's collaborate to transform your vision into reality!
       </motion.p>
+
+      <div className="mt-20 flex flex-wrap gap-10">
+        {services.map((service, index) => (
+          <ServiceCard key={service.title} index={index} {...service} />
+        ))}
+
+      </div>
     </>
   )
 }
