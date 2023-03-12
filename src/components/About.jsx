@@ -27,7 +27,7 @@ const ServiceCard = ({ index, title, icon }) => {
     </Tilt>
   )
 }
-
+// Change
 const About = () => {
   return (
     <>
