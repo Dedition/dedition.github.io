@@ -51,6 +51,7 @@ import tripguide from "./tripguide.png";
 import posys from "./posys.png";
 import flickr from "./flickr.png";
 import chatbot from "./chatbot.png";
+import liveweb from "./liveweb.png"
 
 export {
   leologo,
@@ -101,5 +102,6 @@ export {
   gitlab,
   posys,
   flickr,
-  chatbot
+  chatbot,
+  liveweb
 };

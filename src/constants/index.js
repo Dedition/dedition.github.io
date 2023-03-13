@@ -289,6 +289,7 @@ const projects = [
         ],
         image: posys,
         source_code_link: "https://github.com/Dedition/pos-system",
+        live_link: "https://pos-frontend.onrender.com/",
     },
     {
         name: "FlickrClone",
@@ -322,6 +323,7 @@ const projects = [
         ],
         image: flickr,
         source_code_link: "https://github.com/Dedition/flickr-clone",
+        live_link: "https://flickrpixelclone.herokuapp.com/"
     },
     {
         name: "AI SalesBot",
