@@ -255,7 +255,7 @@ const testimonials = [
     },
     {
         testimonial:
-            "He is such a quick and witty problem solver that it surprises me every time how much faster we are able to finish a project whenever we work together opposed to if I were to work alone or someone else.",
+            "He is such a quick and witty problem solver that it surprises me every time how much faster we are able to finish a project whenever we work together opposed to if I were to work alone or with someone else.",
         name: "Danny Toan",
         designation: "QA Engineer",
         company: "QA Wolf",
