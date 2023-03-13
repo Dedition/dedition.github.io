@@ -1,6 +1,7 @@
 import leologo from "./leologo.svg";
 import leologopng from "./leologopng.png";
 import leologotwo from "./leologotwo.svg";
+import leosymb from "./leosymb.png";
 import backend from "./backend.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
@@ -61,6 +62,7 @@ export {
   leologo,
   leologotwo,
   leologopng,
+  leosymb,
   backend,
   creator,
   mobile,

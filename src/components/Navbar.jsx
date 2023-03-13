@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { styles } from '../styles';
 import { navLinks } from '../constants';
-import { leologopng, menu, close } from '../assets';
+import { leosymb, menu, close } from '../assets';
 
 
 const Navbar = () => {
@@ -23,7 +23,7 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={leologopng} alt="leo-logo" className="w-9 h-9 object-contain" />
+          <img src={leosymb} alt="leo-logo" className="w-9 h-9 object-contain" />
           <p className="text-white text-[18px] font-bold cursor-pointer flex">
             Leo &nbsp;
             <span className="sm:block hidden">| Software Engineer</span>
