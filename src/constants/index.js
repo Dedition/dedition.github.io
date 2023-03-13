@@ -100,10 +100,10 @@ const technologies = [
         name: "React JS",
         icon: reactjs,
     },
-    {
-        name: "Redux Toolkit",
-        icon: redux,
-    },
+    // {
+    //     name: "Redux Toolkit",
+    //     icon: redux,
+    // },
     // {
     //     name: "Tailwind CSS",
     //     icon: tailwind,
@@ -136,10 +136,10 @@ const technologies = [
         name: "AWS",
         icon: aws,
     },
-    {
-        name: "GCP",
-        icon: gcp,
-    },
+    // {
+    //     name: "GCP",
+    //     icon: gcp,
+    // },
     {
         name: "Python",
         icon: python,
@@ -152,10 +152,10 @@ const technologies = [
         name: "PostgreSQL",
         icon: postgresql,
     },
-    {
-        name: "Sequelize",
-        icon: sequelize,
-    },
+    // {
+    //     name: "Sequelize",
+    //     icon: sequelize,
+    // },
     {
         name: "Flask",
         icon: flask,
