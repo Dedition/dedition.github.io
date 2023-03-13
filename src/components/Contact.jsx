@@ -63,6 +63,13 @@ const Contact = () => {
               placeholder="Please do leave a message for me!"
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outlined-none border-none font-medium" />
           </label>
+
+          <button
+            type="submit"
+            className="bg-secondary py-4 px-6 text-white rounded-lg outlined-none border-none font-medium hover:bg-blue-900 hover:text-purple-100"
+          >
+            {loading ? 'Sending...' : 'Send Message'}
+          </button>
         </form>
 
 
