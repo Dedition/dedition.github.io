@@ -286,6 +286,10 @@ const projects = [
                 name: "Node.js",
                 color: "orange-text-gradient",
             },
+            {
+                name: "Next.js",
+                color: "bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-rose-900 via-amber-800 to-rose-400",
+            },
         ],
         image: posys,
         source_code_link: "https://github.com/Dedition/pos-system",
@@ -310,15 +314,19 @@ const projects = [
             },
             {
                 name: "AWS",
-                color: "orange-text-gradient",
+                color: "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-white via-sky-500 to-sky-500",
             },
             {
                 name: "Docker",
-                color: "blue-text-gradient",
+                color: "bg-gradient-to-bl from-indigo-900 via-indigo-400 to-indigo-900",
             },
             {
                 name: "Express.js",
-                color: "white-text-gradient",
+                color: "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-200 via-violet-600 to-sky-900",
+            },
+            {
+                name: "SQL",
+                color: "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-900 to-yellow-300",
             },
         ],
         image: flickr,
@@ -332,19 +340,19 @@ const projects = [
         tags: [
             {
                 name: "python",
-                color: "blue-text-gradient",
+                color: "bg-gradient-to-r from-orange-400 to-rose-400",
             },
             {
                 name: "GPT-3",
-                color: "green-text-gradient",
+                color: "bg-[conic-gradient(at_right,_var(--tw-gradient-stops))] from-blue-400 to-emerald-400",
             },
             {
                 name: "tensorflow",
-                color: "pink-text-gradient",
+                color: "bg-gradient-to-r from-green-300 via-blue-500 to-purple-600",
             },
             {
                 name: "numpy",
-                color: "orange-text-gradient",
+                color: "bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500",
             },
         ],
         image: chatbot,
