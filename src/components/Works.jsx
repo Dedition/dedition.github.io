@@ -9,8 +9,34 @@ import { fadeIn, textVariant } from '../utils/motion';
 
 const Works = () => {
   return (
-    <div>Works</div>
+    <>
+      <motion.div
+        variants={textVariant()}
+      >
+        <p className={styles.sectionSubText}>My Projects</p>
+        <h2 className={styles.sectionHeadText}>Projects</h2>
+      </motion.div>
+
+      <div className="w-full flex">
+        <motion.p
+          variants={fadeIn("", "", 0.1, 1)}
+          className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
+        >
+          By presenting actual work examples, my projects showcase my competency and experience. Each project is summarized briefly,
+          along with code repositories and live demos links.
+          This demonstrates my proficiency in resolving intricate problems, working with a variety of technologies,
+          and efficiently overseeing projects.
+        </motion.p>
+      </div>
+
+      <div className="mt-20 flex flex-wrap gap-7">
+        {projects.map((project, index) => (
+          <ProjectCard key={`project-${index}`} index={index} {...project} />
+
+        ))}
+      </div>
+    </>
   )
 }
 
-export default Works
+export default SectionWrapper(Works, "");
