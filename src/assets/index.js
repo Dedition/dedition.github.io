@@ -48,6 +48,9 @@ import hsm from "./company/hsm.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import posys from "./posys.png";
+import flickr from "./flickr.png";
+import chatbot from "./chatbot.png";
 
 export {
   leologo,
@@ -96,4 +99,7 @@ export {
   express,
   jenkins,
   gitlab,
+  posys,
+  flickr,
+  chatbot
 };

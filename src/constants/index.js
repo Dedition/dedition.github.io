@@ -37,6 +37,9 @@ import {
     express,
     jenkins,
     gitlab,
+    posys,
+    flickr,
+    chatbot,
 } from "../assets";
 
 export const navLinks = [
@@ -268,16 +271,24 @@ const projects = [
                 color: "blue-text-gradient",
             },
             {
+                name: "redux",
+                color: "pink-text-gradient",
+            },
+            {
                 name: "mongodb",
                 color: "green-text-gradient",
             },
             {
-                name: "tailwind",
+                name: "typescript",
                 color: "pink-text-gradient",
             },
+            {
+                name: "Node.js",
+                color: "orange-text-gradient",
+            },
         ],
-        image: carrent,
-        source_code_link: "https://github.com/",
+        image: posys,
+        source_code_link: "https://github.com/Dedition/pos-system",
     },
     {
         name: "FlickrClone",
@@ -289,37 +300,53 @@ const projects = [
                 color: "blue-text-gradient",
             },
             {
+                name: "redux",
+                color: "pink-text-gradient",
+            },
+            {
                 name: "restapi",
                 color: "green-text-gradient",
             },
             {
-                name: "scss",
-                color: "pink-text-gradient",
+                name: "AWS",
+                color: "orange-text-gradient",
+            },
+            {
+                name: "Docker",
+                color: "blue-text-gradient",
+            },
+            {
+                name: "Express.js",
+                color: "white-text-gradient",
             },
         ],
-        image: jobit,
-        source_code_link: "https://github.com/",
+        image: flickr,
+        source_code_link: "https://github.com/Dedition/flickr-clone",
     },
     {
         name: "AI SalesBot",
         description:
-            "AI bot designed within a Python application that uses NLP and deep learning to provide accurate and personalized responses to customer inquiries, reducing the workload of customer service teams. It has an accuracy rate of over 96% and is optimized for faster response times and greater efficiency.",
+            "AI bot designed within a Python application that uses NLP, GPT-3 and deep learning to provide accurate and personalized responses to customer inquiries, reducing the workload of customer service teams. It has an accuracy rate of over 96% and is optimized for faster response times and greater efficiency.",
         tags: [
             {
-                name: "nextjs",
+                name: "python",
                 color: "blue-text-gradient",
             },
             {
-                name: "supabase",
+                name: "GPT-3",
                 color: "green-text-gradient",
             },
             {
-                name: "css",
+                name: "tensorflow",
                 color: "pink-text-gradient",
             },
+            {
+                name: "numpy",
+                color: "orange-text-gradient",
+            },
         ],
-        image: tripguide,
-        source_code_link: "https://github.com/",
+        image: chatbot,
+        source_code_link: "https://github.com/Dedition/intelsalebot",
     },
 ];
 
