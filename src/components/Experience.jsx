@@ -8,10 +8,47 @@ import { experiences } from '../constants'
 import { SectionWrapper } from '../hoc';
 import { textVariant } from '../utils/motion';
 
+const ExperienceCard = ({ experience }) => {
+  <VerticalTimelineElement
+    contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+    contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
+    date={experience.date}
+    iconStyle={{ background: experience.iconBg }}
+    icon={
+      <div>
+        <img src={experience.icon} alt={experience.company_name}
+          className="w-[60%] h-[60%] object-contain"
+        />
+      </div>
+    }
+  >
+    <div>
+
+    </div>
+
+  </VerticalTimelineElement>
+}
+
 const Experience = () => {
   return (
-    <div>Experience</div>
+    <>
+      <motion.div
+        variants={textVariant()}
+      >
+        <p className={styles.sectionSubText}>What I have done so far</p>
+        <h2 className={styles.sectionHeadText}>Work Experience</h2>
+      </motion.div>
+
+      <div className="mt-20 flex flex-col">
+        <VerticalTimeline>
+          {experiences.map((experience, index) => (
+            <ExperienceCard key={index} experience={experience} />
+          ))}
+        </VerticalTimeline>
+
+      </div>
+    </>
   )
 }
 
-export default Experience
+export default SectionWrapper(Experience, 'work');
