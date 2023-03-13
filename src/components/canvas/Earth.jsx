@@ -8,7 +8,11 @@ const Earth = () => {
   const earth = useGLTF('./planet/scene.gltf');
 
   return (
-    <primitive object={earth.scene} />
+    <primitive object={earth.scene}
+      scale={2.5}
+      position-y={0}
+      rotation-y={0}
+    />
   )
 }
 
@@ -18,7 +22,7 @@ const EarthCanvas = () => {
       shadows
       frameLoop="demand"
       gl={{ preserveDrawingBuffer: true }}
-      camera={{ position: [0, 0, 3], fov: 50 }}
+      camera={{ position: [-4, 3, 6], fov: 45, near: 0.1, far: 200 }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
