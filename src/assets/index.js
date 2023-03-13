@@ -51,7 +51,11 @@ import tripguide from "./tripguide.png";
 import posys from "./posys.png";
 import flickr from "./flickr.png";
 import chatbot from "./chatbot.png";
-import liveweb from "./liveweb.png"
+import liveweb from "./liveweb.png";
+
+import chris from "./test-chris.jpeg";
+import connor from "./test-connor.png";
+import danny from "./test-danny.jpeg";
 
 export {
   leologo,
@@ -103,5 +107,8 @@ export {
   posys,
   flickr,
   chatbot,
-  liveweb
+  liveweb,
+  chris,
+  connor,
+  danny,
 };

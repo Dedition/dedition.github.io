@@ -40,6 +40,9 @@ import {
     posys,
     flickr,
     chatbot,
+    connor,
+    danny,
+    chris,
 } from "../assets";
 
 export const navLinks = [
@@ -236,27 +239,27 @@ const experiences = [
 const testimonials = [
     {
         testimonial:
-            "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-        name: "Sara Lee",
-        designation: "CFO",
-        company: "Acme Co",
-        image: "https://randomuser.me/api/portraits/women/4.jpg",
+            'Leo possess all of the "soft skills" that turn a good software engineer into a great one; he has immense patience and a great sense of humor! Whoever is fortunate enough to employ him next should consider themselves lucky.',
+        name: "Connor Fitch",
+        designation: "Software Engineer",
+        company: "unspun",
+        image: connor,
     },
     {
         testimonial:
-            "I've never met a web developer who truly cares about their clients' success like Rick does.",
-        name: "Chris Brown",
-        designation: "COO",
-        company: "DEF Corp",
-        image: "https://randomuser.me/api/portraits/men/5.jpg",
+            "Leo's work ethic and professional demeanor was always such a pleasure to work with and collaborate with. Most importantly though, Leo is compassionate and truly cares about learning about every individual he comes in contact with. There were many hours past normal working hours that Leo and I would chat about life, goals, and anything under the sun.",
+        name: "Christopher Threadgill",
+        designation: "Software Administrator",
+        company: "Walmart",
+        image: chris,
     },
     {
         testimonial:
-            "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-        name: "Lisa Wang",
-        designation: "CTO",
-        company: "456 Enterprises",
-        image: "https://randomuser.me/api/portraits/women/6.jpg",
+            "He is such a quick and witty problem solver that it surprises me every time how much faster we are able to finish a project whenever we work together opposed to if I were to work alone or someone else.",
+        name: "Danny Toan",
+        designation: "QA Engineer",
+        company: "QA Wolf",
+        image: danny,
     },
 ];
 
