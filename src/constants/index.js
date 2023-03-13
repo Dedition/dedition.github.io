@@ -317,16 +317,20 @@ const projects = [
                 color: "bg-[conic-gradient(at_bottom,_var(--tw-gradient-stops))] from-white via-sky-500 to-sky-500",
             },
             {
-                name: "Docker",
+                name: "docker",
                 color: "bg-gradient-to-bl from-indigo-900 via-indigo-400 to-indigo-900",
             },
             {
-                name: "Express.js",
+                name: "express.js",
                 color: "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-200 via-violet-600 to-sky-900",
             },
             {
                 name: "SQL",
                 color: "bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-amber-900 to-yellow-300",
+            },
+            {
+                name: "css",
+                color: "text-gradient bg-gradient-to-r from-blue-900 to-blue-600",
             },
         ],
         image: flickr,
