@@ -239,7 +239,7 @@ const experiences = [
 const testimonials = [
     {
         testimonial:
-            'Leo possess all of the "soft skills" that turn a good software engineer into a great one; he has immense patience and a great sense of humor! Whoever is fortunate enough to employ him next should consider themselves lucky.',
+            'Leo possesses all of the "soft skills" that turn a good software engineer into a great one; he has immense patience and a great sense of humor! Whoever is fortunate enough to employ him next should consider themselves lucky.',
         name: "Connor Fitch",
         designation: "Software Engineer",
         company: "unspun",
