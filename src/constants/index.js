@@ -26,6 +26,17 @@ import {
     jobit,
     tripguide,
     threejs,
+    aws,
+    gcp,
+    python,
+    database,
+    postgresql,
+    sequelize,
+    flask,
+    nextjs,
+    express,
+    jenkins,
+    gitlab,
 } from "../assets";
 
 export const navLinks = [
@@ -63,14 +74,14 @@ const services = [
 ];
 
 const technologies = [
-    {
-        name: "HTML 5",
-        icon: html,
-    },
-    {
-        name: "CSS 3",
-        icon: css,
-    },
+    // {
+    //     name: "HTML 5",
+    //     icon: html,
+    // },
+    // {
+    //     name: "CSS 3",
+    //     icon: css,
+    // },
     {
         name: "JavaScript",
         icon: javascript,
@@ -87,10 +98,10 @@ const technologies = [
         name: "Redux Toolkit",
         icon: redux,
     },
-    {
-        name: "Tailwind CSS",
-        icon: tailwind,
-    },
+    // {
+    //     name: "Tailwind CSS",
+    //     icon: tailwind,
+    // },
     {
         name: "Node JS",
         icon: nodejs,
@@ -99,22 +110,68 @@ const technologies = [
         name: "MongoDB",
         icon: mongodb,
     },
-    {
-        name: "Three JS",
-        icon: threejs,
-    },
-    {
-        name: "git",
-        icon: git,
-    },
-    {
-        name: "figma",
-        icon: figma,
-    },
+    // {
+    //     name: "Three JS",
+    //     icon: threejs,
+    // },
+    // {
+    //     name: "git",
+    //     icon: git,
+    // },
+    // {
+    //     name: "figma",
+    //     icon: figma,
+    // },
     {
         name: "docker",
         icon: docker,
     },
+    {
+        name: "AWS",
+        icon: aws,
+    },
+    {
+        name: "GCP",
+        icon: gcp,
+    },
+    {
+        name: "Python",
+        icon: python,
+    },
+    // {
+    //     name: "Database",
+    //     icon: database,
+    // },
+    {
+        name: "PostgreSQL",
+        icon: postgresql,
+    },
+    {
+        name: "Sequelize",
+        icon: sequelize,
+    },
+    {
+        name: "Flask",
+        icon: flask,
+    },
+    {
+        name: "Next JS",
+        icon: nextjs,
+    },
+    {
+        name: "Express JS",
+        icon: express,
+    },
+    // {
+    //     name: "Jenkins",
+    //     icon: jenkins,
+    // },
+    {
+        name: "GitLab",
+        icon: gitlab,
+    },
+
+
 ];
 
 const experiences = [

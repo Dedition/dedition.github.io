@@ -22,6 +22,20 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import kubernetes from "./tech/kubernetes.svg";
+import k8s from "./tech/k8s.png";
+import aws from "./tech/aws.png";
+import gcp from "./tech/gcp.svg";
+import python from "./tech/python.png";
+import database from "./tech/database.svg";
+import postgresql from "./tech/postgresql.png";
+import sequelize from "./tech/sequelize.png";
+import flask from "./tech/flask.svg";
+import nextjs from "./tech/nextjs.png";
+import express from "./tech/express.svg";
+import jenkins from "./tech/jenkins.png";
+import gitlab from "./tech/gitlab.png";
+
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
@@ -49,6 +63,8 @@ export {
   css,
   docker,
   figma,
+  kubernetes,
+  k8s,
   git,
   html,
   javascript,
@@ -69,4 +85,15 @@ export {
   abm,
   stealth,
   hsm,
+  aws,
+  gcp,
+  python,
+  database,
+  postgresql,
+  sequelize,
+  flask,
+  nextjs,
+  express,
+  jenkins,
+  gitlab,
 };
