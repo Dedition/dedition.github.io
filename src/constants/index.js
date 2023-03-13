@@ -259,9 +259,9 @@ const testimonials = [
 
 const projects = [
     {
-        name: "Car Rent",
+        name: "POS-System",
         description:
-            "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+            "Web application built using MERN stack (MongoDB, Express.js, React, Node.js) for a point-of-sale administrative overview app with a frontend using React, Material-UI, and Nivo Charts and a backend using Node.js, Express.js, and Mongoose. State management is handled with Redux Toolkit and data fetching with Redux Toolkit Query.",
         tags: [
             {
                 name: "react",
@@ -280,9 +280,9 @@ const projects = [
         source_code_link: "https://github.com/",
     },
     {
-        name: "Job IT",
+        name: "FlickrClone",
         description:
-            "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+            "FlickrClone is a website for users to upload and browse images about anything they want. It is heavily inspired by Flickr.com. Made with a ReactJS frontend and ExpressJS backend. Includes, AWS, Redux, Docker, Node.js and Redux.",
         tags: [
             {
                 name: "react",
@@ -301,9 +301,9 @@ const projects = [
         source_code_link: "https://github.com/",
     },
     {
-        name: "Trip Guide",
+        name: "AI SalesBot",
         description:
-            "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+            "AI bot designed within a Python application that uses NLP and deep learning to provide accurate and personalized responses to customer inquiries, reducing the workload of customer service teams. It has an accuracy rate of over 96% and is optimized for faster response times and greater efficiency.",
         tags: [
             {
                 name: "nextjs",
