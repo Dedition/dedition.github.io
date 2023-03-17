@@ -182,19 +182,6 @@ const technologies = [
 
 const experiences = [
     {
-        title: "Dispatch Administrator",
-        company_name: "ABM Industries",
-        icon: abm,
-        iconBg: "#E6DEDD",
-        date: "Mar 2017 - Jul 2021",
-        points: [
-            "Formulated code to extract, transform, and load data from various sources into the dispatch systems",
-            "Designed Python scripts to automate over 40 hours per month of data entry work",
-            "Established effective communication channels to facilitate collaboration between team members and stakeholders, ensuring project goals were met within established timelines and budgets",
-            "Analyzed and optimized the internal tooling system's performance and scalability, utilizing tools such as load testing and database indexing, resulting in a 25% increase in system efficiency and a 50% decrease in system downtime",
-        ],
-    },
-    {
         title: "Full-Stack Software Engineer",
         company_name: "Stealth",
         icon: stealth,
@@ -206,6 +193,19 @@ const experiences = [
             "Implemented highly efficient CI/CD pipelines using GitLab, ensuring smooth and rapid code deployment for increased reliability and enhanced feature rollout capabilities",
             "Improved scalability, speed and developer workflow by deploying Docker containers that broke down a monolithic  application into microservices within a Kubernetes cluster",
             "Design and implement RESTful APIs and microservices to enable seamless communication between the front-end and back-end of web applications",
+        ],
+    },
+    {
+        title: "Dispatch Administrator",
+        company_name: "ABM Industries",
+        icon: abm,
+        iconBg: "#E6DEDD",
+        date: "Mar 2017 - Jul 2021",
+        points: [
+            "Formulated code to extract, transform, and load data from various sources into the dispatch systems",
+            "Designed Python scripts to automate over 40 hours per month of data entry work",
+            "Established effective communication channels to facilitate collaboration between team members and stakeholders, ensuring project goals were met within established timelines and budgets",
+            "Analyzed and optimized the internal tooling system's performance and scalability, utilizing tools such as load testing and database indexing, resulting in a 25% increase in system efficiency and a 50% decrease in system downtime",
         ],
     },
     // {
