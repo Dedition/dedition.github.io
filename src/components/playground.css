@@ -10,11 +10,31 @@
     color 0.2s,
     filter 0.2s;
   position: relative;
+  z-index: 3;
 }
 .curiosity-trigger > span {
   display: inline-block;
   animation: asterisk-turn 28s linear infinite;
   pointer-events: none;
+}
+.curiosity-word {
+  display: inline-block;
+  transform-origin: center;
+}
+.hero-copy[data-curiosity-level]:not([data-curiosity-level="0"])
+  .curiosity-word {
+  pointer-events: none;
+}
+.hero-copy[data-curiosity-level="1"] .curiosity-trigger {
+  filter: drop-shadow(0 0 12px #ff794f66);
+}
+.hero-copy[data-curiosity-level="2"] .curiosity-trigger {
+  color: #ffd1af;
+  filter: drop-shadow(0 0 22px #ff794faa);
+}
+.hero-copy[data-curiosity-level="3"] .curiosity-trigger {
+  color: #fff4d6;
+  filter: drop-shadow(0 0 30px #ff794f);
 }
 .curiosity-cage {
   display: inline-block;

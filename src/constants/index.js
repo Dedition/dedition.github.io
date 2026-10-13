@@ -16,6 +16,8 @@ export const navigation = [
 export const experience = [
   {
     company: "BetterHelp",
+    brand: "betterhelp",
+    currentEmployment: true,
     context: "Teladoc Health",
     role: "Software Engineer",
     date: "Jul 2023 — Present",
@@ -25,6 +27,7 @@ export const experience = [
   },
   {
     company: "InBalance",
+    brand: "inbalance",
     context: "Eunoia Technologies · Independent product",
     role: "Creator & Full-Stack Engineer",
     date: "2024 — Present",
@@ -34,6 +37,7 @@ export const experience = [
   },
   {
     company: "App Academy",
+    brand: "app-academy",
     context: "Part-time",
     role: "Software Engineering Assistant",
     date: "Mar 2023 — Jul 2023",
@@ -43,6 +47,7 @@ export const experience = [
   },
   {
     company: "HyperStructure Media",
+    brand: "hyperstructure",
     context: "Bootstrapped startup",
     role: "Full-Stack Software Engineer",
     date: "Oct 2022 — Jun 2023",

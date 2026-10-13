@@ -503,6 +503,7 @@ test("portrait, landscape, and touch users can reach the decisions without clipp
     await trigger.tap();
     await trigger.tap();
     const world = journey(page);
+    await expect(world).toBeVisible();
     for (const viewport of [
       { width: 320, height: 700 },
       { width: 390, height: 844 },
@@ -1216,6 +1217,7 @@ test("the hidden cage and escape controls are reachable by touch in portrait and
     await trigger.tap();
     await trigger.tap();
     const world = journey(page);
+    await expect(world).toBeVisible();
     for (const viewport of [
       { width: 390, height: 844 },
       { width: 844, height: 390 },
@@ -1377,9 +1379,9 @@ test("late sound opt-in respects the escape silence and every sound stops on pau
     };
   });
   await page.goto("/");
+  await openWithCuriosity(page);
   // Keep wall-clock browser work from crossing the short silent interval.
   await page.clock.pauseAt(await page.evaluate(() => Date.now() + 1000));
-  await openWithCuriosity(page);
   await button(journey(page), "Mute sound").click();
   const world = await reachConsent(page);
   await uncoverEscape(world);

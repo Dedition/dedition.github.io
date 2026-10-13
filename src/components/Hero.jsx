@@ -8,10 +8,23 @@ import {
 import MonogramScene from "./MonogramScene";
 import { Arrow } from "./Icons";
 import NightShift from "./NightShift";
+import { scatterWords } from "./curiosity-scatter";
 import "./playground.css";
 
 const finishes = ["alloy", "chrome", "blueprint"];
 const aftermathLine = "“Please don’t put me back.”";
+
+function CuriousWords({ children }) {
+  return children.split(/(\s+)/).map((word, index) =>
+    /\S/.test(word) ? (
+      <span className="curiosity-word" key={index}>
+        {word}
+      </span>
+    ) : (
+      word
+    ),
+  );
+}
 
 export default function Hero({ paused, reducedMotion, onToggleMotion }) {
   const [world, setWorld] = useState(false);
@@ -23,8 +36,14 @@ export default function Hero({ paused, reducedMotion, onToggleMotion }) {
   const [escapePending, setEscapePending] = useState(false);
   const [aftermathUnread, setAftermathUnread] = useState(false);
   const [cageVisible, setCageVisible] = useState(false);
+  const [curiosityLevel, setCuriosityLevel] = useState(0);
   const escaped = useRef(false);
   const curiosity = useRef({ count: 0, time: 0 });
+  const copyRef = useRef(null);
+  const scatterAnimations = useRef([]);
+  const restoreTimer = useRef(null);
+  const entryTimer = useRef(null);
+  const entryPending = useRef(false);
   const dialogRef = useRef(null);
   const triggerRef = useRef(null);
   const closeRef = useRef(null);
@@ -49,41 +68,97 @@ export default function Hero({ paused, reducedMotion, onToggleMotion }) {
     return () => window.clearTimeout(timeout);
   }, [cageVisible, world]);
 
-  function enterWorld() {
+  const resetCuriosity = useCallback(() => {
+    window.clearTimeout(restoreTimer.current);
+    window.clearTimeout(entryTimer.current);
+    entryPending.current = false;
+    scatterAnimations.current.forEach((animation) => animation.cancel());
+    scatterAnimations.current = [];
+    curiosity.current = { count: 0, time: 0 };
+    setCuriosityLevel(0);
+    setHint((value) => (value === aftermathLine ? value : ""));
+  }, []);
+
+  const enterWorld = useCallback(() => {
+    resetCuriosity();
     if (typeof dialogRef.current?.showModal !== "function") {
       setHint("This browser can explore the sculpture right here.");
       return;
     }
-    curiosity.current = { count: 0, time: 0 };
     setHint("");
     setCageVisible(false);
     setWorld(true);
-  }
+  }, [resetCuriosity]);
 
   function followCuriosity() {
+    if (entryPending.current || world) return;
+    window.clearTimeout(restoreTimer.current);
     const now = Date.now();
+    const count = aftermathUnread
+      ? 1
+      : now - curiosity.current.time < 5000
+        ? curiosity.current.count + 1
+        : 1;
     if (aftermathUnread) {
       setAftermathUnread(false);
-      curiosity.current = { count: 1, time: now };
       setHint(aftermathLine);
-      return;
-    }
-    const count =
-      now - curiosity.current.time < 5000 ? curiosity.current.count + 1 : 1;
-    curiosity.current = { count, time: now };
-    if (count >= 3) enterWorld();
-    else
+    } else if (count < 3) {
       setHint(
         count === 1
           ? "Some things deserve a second look."
           : "One more. Follow your curiosity.",
       );
+    }
+    curiosity.current = { count, time: now };
+    setCuriosityLevel(count);
+    if (!paused && !reducedMotion) {
+      scatterAnimations.current = scatterWords(
+        copyRef.current,
+        triggerRef.current,
+        count,
+        scatterAnimations.current,
+      );
+    }
+    if (count >= 3) {
+      if (paused || reducedMotion || !scatterAnimations.current.length) {
+        enterWorld();
+      } else {
+        entryPending.current = true;
+        entryTimer.current = window.setTimeout(enterWorld, 560);
+      }
+      return;
+    }
+    restoreTimer.current = window.setTimeout(resetCuriosity, 5000);
   }
+
+  useEffect(() => {
+    if (!paused && !reducedMotion) return;
+    if (entryPending.current) enterWorld();
+    else resetCuriosity();
+  }, [paused, reducedMotion, enterWorld, resetCuriosity]);
+
+  useEffect(() => {
+    const onVisibility = () => {
+      if (document.hidden) resetCuriosity();
+    };
+    window.addEventListener("resize", resetCuriosity);
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      window.removeEventListener("resize", resetCuriosity);
+      document.removeEventListener("visibilitychange", onVisibility);
+      resetCuriosity();
+    };
+  }, [resetCuriosity]);
 
   useEffect(() => {
     let sequence = "";
     let lastKeyTime = 0;
     function findSecret(event) {
+      if (event.key === "Escape" && entryPending.current) {
+        event.preventDefault();
+        resetCuriosity();
+        return;
+      }
       if (
         event.defaultPrevented ||
         event.repeat ||
@@ -112,7 +187,7 @@ export default function Hero({ paused, reducedMotion, onToggleMotion }) {
     }
     document.addEventListener("keydown", findSecret);
     return () => document.removeEventListener("keydown", findSecret);
-  }, []);
+  }, [enterWorld, resetCuriosity]);
 
   useLayoutEffect(() => {
     const dialog = dialogRef.current;
@@ -135,19 +210,26 @@ export default function Hero({ paused, reducedMotion, onToggleMotion }) {
 
   return (
     <section className="hero shell" aria-labelledby="hero-title">
-      <div className="hero-copy">
+      <div
+        className="hero-copy"
+        ref={copyRef}
+        data-curiosity-level={curiosityLevel}
+      >
         <p className="eyebrow">
           <span className="status-dot" />
-          FULL-STACK SOFTWARE ENGINEER
+          <span>
+            <CuriousWords>FULL-STACK SOFTWARE ENGINEER</CuriousWords>
+          </span>
         </p>
         <h1 id="hero-title">
-          Serious about
+          <CuriousWords>Serious about</CuriousWords>
           <br />
-          the <span className="serif-word">craft.</span>
+          <CuriousWords>the</CuriousWords>{" "}
+          <span className="serif-word curiosity-word">craft.</span>
           <br />
-          Curious by
+          <CuriousWords>Curious by</CuriousWords>
           <br />
-          <span className="outline-word">nature.</span>
+          <span className="outline-word curiosity-word">nature.</span>
           <button
             type="button"
             className="hero-asterisk curiosity-trigger"
@@ -183,8 +265,10 @@ export default function Hero({ paused, reducedMotion, onToggleMotion }) {
           </button>
         </h1>
         <p className="hero-intro">
-          I’m Leo. I build thoughtful software, from the interface you touch to
-          the systems you don’t see.
+          <CuriousWords>
+            I’m Leo. I build thoughtful software, from the interface you touch
+            to the systems you don’t see.
+          </CuriousWords>
         </p>
         <div className="hero-actions">
           <a className="button button-primary" href="#work">

@@ -22,8 +22,15 @@ export default function Experience() {
       </div>
       <div className="experience-list">
         {experience.map((job, index) => (
-          <article className="experience-row" key={job.company}>
+          <article
+            className={`experience-row${job.currentEmployment ? " experience-row-current" : ""}`}
+            data-brand={job.brand}
+            key={job.company}
+          >
             <div className="experience-date">
+              {job.currentEmployment && (
+                <span className="experience-current-label">Current role</span>
+              )}
               <span className="experience-number">0{index + 1}</span>
               <span>{job.date}</span>
             </div>

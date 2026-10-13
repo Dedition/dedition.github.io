@@ -342,8 +342,8 @@ test("slow fallback narration gets breathing room and a zero-volume change is im
   });
   await page.clock.install();
   await page.goto("/");
-  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 1000));
   await openJourney(page);
+  await page.clock.pauseAt(await page.evaluate(() => Date.now() + 1000));
   await control(page, "Play in this window").click();
   await expect
     .poll(() => page.evaluate(() => window.fallbackLines.length))
