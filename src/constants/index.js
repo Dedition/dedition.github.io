@@ -36,16 +36,6 @@ export const experience = [
     tags: ["React Native", "Go", "PostgreSQL"],
   },
   {
-    company: "App Academy",
-    brand: "app-academy",
-    context: "Part-time",
-    role: "Software Engineering Assistant",
-    date: "Mar 2023 — Jul 2023",
-    description:
-      "Helped full-stack learners work through debugging and code reviews. Explaining a problem clearly is often the first step toward solving it.",
-    tags: ["Mentoring", "Code review", "Debugging"],
-  },
-  {
     company: "HyperStructure Media",
     brand: "hyperstructure",
     context: "Bootstrapped startup",
@@ -54,6 +44,16 @@ export const experience = [
     description:
       "One of two developers building a blockchain ledger prototype for fundraising, working directly with the founder.",
     tags: ["Full-stack development", "Prototyping"],
+  },
+  {
+    company: "App Academy",
+    brand: "app-academy",
+    context: "Part-time",
+    role: "Software Engineering Assistant",
+    date: "Mar 2023 — Jul 2023",
+    description:
+      "Helped full-stack learners work through debugging and code reviews. Explaining a problem clearly is often the first step toward solving it.",
+    tags: ["Mentoring", "Code review", "Debugging"],
   },
 ];
 
