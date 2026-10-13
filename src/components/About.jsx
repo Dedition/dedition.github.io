@@ -1,66 +1,73 @@
-import React from "react";
-import Tilt from "react-tilt";
-import { motion } from "framer-motion";
+import { toolkit } from "../constants";
 
-import { styles } from "../styles";
-import { services } from "../constants";
-import { SectionWrapper } from "../hoc";
-import { fadeIn, textVariant } from "../utils/motion";
-
-const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className='xs:w-[250px] w-full'>
-    <motion.div
-      variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
-    >
-      <div
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
-      >
-        <img
-          src={icon}
-          alt='web-development'
-          className='w-16 h-16 object-contain'
-        />
-
-        <h3 className='text-white text-[20px] font-bold text-center'>
-          {title}
-        </h3>
-      </div>
-    </motion.div>
-  </Tilt>
-);
-
-const About = () => {
+export default function About() {
   return (
-    <>
-      <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview</h2>
-      </motion.div>
-
-      <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
-      >
-        I'm a skilled software developer with experience in Python, TypeScript and
-        JavaScript, and expertise in frameworks like React, TailwindCSS, Node.js, and
-        Three.js. I'm a quick learner and collaborate closely with clients to
-        create efficient, scalable, and user-friendly solutions that solve
-        real-world problems. Let's work together to bring your ideas to life!
-      </motion.p>
-
-      <div className='mt-20 flex flex-wrap gap-10'>
-        {services.map((service, index) => (
-          <ServiceCard key={service.title} index={index} {...service} />
-        ))}
+    <section
+      className="about-section section-space"
+      id="about"
+      aria-labelledby="about-heading"
+    >
+      <div className="shell about-grid">
+        <div className="about-title">
+          <p className="eyebrow section-index">
+            02 / THE PERSON BEHIND THE CODE
+          </p>
+          <h2 id="about-heading">
+            A winding path.
+            <br />A deliberate
+            <br />
+            <span className="serif-word">direction.</span>
+          </h2>
+          <div className="about-stamp" aria-hidden="true">
+            <span>LL</span>
+            <span>
+              ALWAYS
+              <br />A WORK IN
+              <br />
+              PROGRESS.
+            </span>
+            <span>↗</span>
+          </div>
+        </div>
+        <div className="about-story">
+          <p className="large-copy">
+            I like making complicated things feel straightforward.
+          </p>
+          <p>
+            I was born in the UK and have called the US home since 2017.
+          </p>
+          <p>
+            My path into software started outside it. I worked in dispatch at
+            ABM Industries before training at App Academy, helping other
+            developers learn, and moving into full-stack engineering.
+          </p>
+          <p>
+            Now my work spans healthcare software at BetterHelp and InBalance,
+            an independent product I built from the mobile experience down to
+            the database. Different problems, same instinct: understand the
+            details, then make the experience clearer.
+          </p>
+          <p>
+            I care about what happens after the happy path. The retried request.
+            The unexpected payment state. The person navigating with a keyboard.
+            That’s where thoughtful engineering shows up.
+          </p>
+          <p>
+            AI and machine learning have always fascinated me, especially
+            artificial general intelligence (AGI). I explore that interest
+            through small projects and experiments in my own time.
+          </p>
+          <div className="toolkit">
+            <p className="eyebrow">A FEW TOOLS I REACH FOR</p>
+            {toolkit.map(({ label, tools }) => (
+              <div className="toolkit-row" key={label}>
+                <span>{label}</span>
+                <span>{tools}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </>
+    </section>
   );
-};
-
-export default SectionWrapper(About, "about");
+}

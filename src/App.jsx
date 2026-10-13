@@ -1,27 +1,41 @@
-import { BrowserRouter } from 'react-router-dom';
-import { About, Contact, Experience, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas } from './components';
+import { useEffect, useState } from "react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Works from "./components/Works";
+import About from "./components/About";
+import Experience from "./components/Experience";
+import Contact from "./components/Contact";
 
-const App = () => {
+export default function App() {
+  const [motionPaused, setMotionPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+  useEffect(() => {
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => setReducedMotion(preference.matches);
+    preference.addEventListener("change", update);
+    return () => preference.removeEventListener("change", update);
+  }, []);
+  const paused = motionPaused || reducedMotion;
 
   return (
-    <BrowserRouter>
-      <div className="relative z-0 bg-primary">
-        <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-          <Navbar />
-          <Hero />
-        </div>
+    <div className="site" id="top" data-paused={paused}>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
+      <Navbar />
+      <main id="main" tabIndex={-1}>
+        <Hero
+          paused={paused}
+          reducedMotion={reducedMotion}
+          onToggleMotion={() => setMotionPaused(!motionPaused)}
+        />
+        <Works />
         <About />
         <Experience />
-        <Tech />
-        <Works />
-        <Feedbacks />
-        <div className="relative z-0">
-          <Contact />
-          <StarsCanvas />
-        </div>
-      </div>
-    </BrowserRouter>
-  )
+      </main>
+      <Contact />
+    </div>
+  );
 }
-
-export default App;

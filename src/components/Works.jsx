@@ -1,117 +1,199 @@
-import Tilt from 'react-tilt';
-import { motion } from 'framer-motion';
+import { profile } from "../constants";
+import { Arrow, ExternalLink } from "./Icons";
 
-import { styles } from '../styles';
-import { github, liveweb } from '../assets';
-import { SectionWrapper } from '../hoc';
-import { projects } from '../constants';
-import { fadeIn, textVariant } from '../utils/motion';
-
-const ProjectCard = ({
-  index,
-  name,
-  description,
-  tags,
-  image,
-  source_code_link,
-  live_link,
-}) => {
+export default function Works() {
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
-      >
-        <div className='relative w-full h-[230px]'>
-          <img
-            src={image}
-            alt='project_image'
-            className='w-full h-full object-cover rounded-2xl'
-          />
-
-          <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
-
-            {live_link && (
-              <div
-                onClick={() => window.open(live_link, "_blank")}
-                className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
-              >
-                <img
-                  src={liveweb}
-                  alt='source code'
-                  className='w-1/2 h-1/2 object-contain'
-                />
-              </div>
-            )}
-            <div
-              onClick={() => window.open(source_code_link, "_blank")}
-              className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
-            >
+    <section
+      className="work-section shell section-space"
+      id="work"
+      aria-labelledby="work-heading"
+    >
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow section-index">01 / SELECTED WORK</p>
+          <h2 id="work-heading">
+            Built with <span className="serif-word">intent.</span>
+          </h2>
+        </div>
+        <p>
+          A product of my own.
+          <br />
+          Systems that serve other people.
+          <br />
+          The details that make both work.
+        </p>
+      </div>
+      <div className="work-grid">
+        <article className="project project-inbalance">
+          <div className="project-visual inbalance-visual">
+            <div className="project-visual-top">
+              <span>INDEPENDENT PRODUCT</span>
+              <span>01 — MOBILE + BACKEND</span>
+            </div>
+            <div className="inbalance-art-copy">
+              <span className="inbalance-symbol" aria-hidden="true">
+                iB<span>↗</span>
+              </span>
+              <h3>
+                Less guesswork.
+                <br />
+                One next action.
+              </h3>
+              <span className="visual-footnote">
+                INBALANCE / PRODUCT SCREENSHOT
+              </span>
+            </div>
+            <div className="phone-frame">
               <img
-                src={github}
-                alt='source code'
-                className='w-1/2 h-1/2 object-contain'
+                src="/images/inbalance-next-action.png"
+                alt="InBalance’s next-action screen, showing an example tax payment, due date, and payment-recording controls"
+                width="540"
+                height="1200"
+                loading="lazy"
               />
             </div>
-
-
           </div>
-        </div>
-
-        <div className='mt-5'>
-          <h3 className='text-white font-bold text-[24px]'>{name}</h3>
-          <p className='mt-2 text-secondary text-[14px]'>{description}</p>
-        </div>
-        <div className='mt-4 flex flex-wrap gap-2'>
-          {tags.map((tag) => (
-            <p
-              key={`${name}-${tag.name}`}
-              className={`text-[14px] ${tag.color}`}
-            >
-              #{tag.name}
+          <div className="project-body">
+            <div className="project-title">
+              <h3>InBalance</h3>
+              <span className="project-type">Creator & engineer</span>
+            </div>
+            <p>
+              Turning complicated tax obligations into a clear next step. I
+              built the mobile app and the backend behind its calculations,
+              schedules, and payment records.
             </p>
-          ))}
-        </div>
-      </Tilt>
-    </motion.div>
+            <div className="tags">
+              <span>React Native</span>
+              <span>Go</span>
+              <span>PostgreSQL</span>
+            </div>
+            <details className="case-study">
+              <summary>
+                The thinking behind the build
+                <Arrow diagonal />
+              </summary>
+              <div className="case-study-content">
+                <h4>Clarity at the surface. Care underneath.</h4>
+                <p>
+                  The interface needs to make the next action understandable.
+                  The backend needs to preserve how that action was calculated.
+                </p>
+                <ul>
+                  <li>
+                    Versioned calculation snapshots preserve the history behind
+                    a number.
+                  </li>
+                  <li>
+                    Transactional, idempotent payment records prevent retries
+                    from creating duplicate records.
+                  </li>
+                  <li>
+                    Sign-in, subscription verification, reminders, and
+                    payment-proof storage connect the product from end to end.
+                  </li>
+                </ul>
+                <p className="case-study-note">
+                  Independent product built under Eunoia Technologies. This is a
+                  look at the engineering, with an illustrative product
+                  screenshot.
+                </p>
+              </div>
+            </details>
+          </div>
+        </article>
+        <article className="project project-betterhelp">
+          <div className="project-visual betterhelp-visual">
+            <div className="project-visual-top">
+              <span>PRODUCT ENGINEERING</span>
+              <span>02 — WEB + BACKEND</span>
+            </div>
+            <div className="system-art" aria-hidden="true">
+              <div className="system-orbit orbit-one" />
+              <div className="system-orbit orbit-two" />
+              <span className="system-node node-web">web</span>
+              <span className="system-node node-mobile">mobile</span>
+              <span className="system-node node-api">api</span>
+              <div className="system-core">
+                <span>human</span>
+                <span>at the center</span>
+                <svg viewBox="0 0 80 60" fill="none">
+                  <path
+                    d="M8 30h12l7-17 12 35 12-35 7 17h14"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </div>
+            </div>
+            <span className="visual-footnote betterhelp-footnote">
+              A SYSTEM IS ONLY AS GOOD AS ITS CONNECTIONS.
+            </span>
+          </div>
+          <div className="project-body">
+            <div className="project-title">
+              <h3>BetterHelp</h3>
+              <span className="project-type">Software engineer</span>
+            </div>
+            <p>
+              Engineering across the parts of a healthcare product that need to
+              work together: onboarding, subscriptions, payments, and
+              web-to-mobile communication.
+            </p>
+            <div className="tags">
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>PHP</span>
+              <span>MySQL</span>
+            </div>
+            <details className="case-study">
+              <summary>
+                A few things I’ve worked on
+                <Arrow diagonal />
+              </summary>
+              <div className="case-study-content">
+                <h4>The work between the screens.</h4>
+                <ul>
+                  <li>
+                    Connected push registration across PHP authentication APIs,
+                    React, WebViews, and native mobile bridges.
+                  </li>
+                  <li>
+                    Separated checkout pricing and experiment logic into typed
+                    services, with regression tests for existing behavior.
+                  </li>
+                  <li>
+                    Fixed duplicate late-cancellation charges for family
+                    accounts and corrected refund and dispute reconciliation.
+                  </li>
+                  <li>
+                    Reduced session-comment queries from five per session to
+                    five total through batch loading.
+                  </li>
+                  <li>
+                    Improved keyboard navigation, dialogs, and scheduling
+                    announcements.
+                  </li>
+                </ul>
+                <p className="case-study-note">
+                  Selected contributions as part of the BetterHelp engineering
+                  team. The illustration is original artwork, not a product
+                  interface.
+                </p>
+              </div>
+            </details>
+          </div>
+        </article>
+      </div>
+      <div className="work-afterword">
+        <p>
+          <span aria-hidden="true">↳</span> There’s more in the workshop.
+          Earlier builds, experiments, and things learned along the way.
+        </p>
+        <ExternalLink href={profile.github} className="text-link">
+          Explore my GitHub
+        </ExternalLink>
+      </div>
+    </section>
   );
-};
-
-
-const Works = () => {
-  return (
-    <>
-      <motion.div
-        variants={textVariant()}
-      >
-        <p className={styles.sectionSubText}>My Projects</p>
-        <h2 className={styles.sectionHeadText}>Projects</h2>
-      </motion.div>
-
-      <div className="w-full flex">
-        <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
-          className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
-        >
-          By presenting actual work examples, my projects showcase my competency and experience. Each project is summarized briefly,
-          along with code repositories and live demos links.
-          This demonstrates my proficiency in resolving intricate problems, working with a variety of technologies,
-          and efficiently overseeing projects.
-        </motion.p>
-      </div>
-
-      <div className="mt-20 flex flex-wrap gap-7">
-        {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
-
-        ))}
-      </div>
-    </>
-  )
 }
-
-export default SectionWrapper(Works, "");

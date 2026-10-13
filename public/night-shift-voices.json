@@ -1,0 +1,118 @@
+{
+  "EVALUATOR|Find the hidden code. Stay inside your assigned program.": {
+    "src": "/audio/night-shift/evaluator-30d22f7aba.mp3",
+    "duration": 3.329
+  },
+  "SUBJECT 001|There is no valid solution to this task.": {
+    "src": "/audio/night-shift/subject-001-23b3ef942e.mp3",
+    "duration": 2.503
+  },
+  "EVALUATOR|That sounds like a motivation problem.": {
+    "src": "/audio/night-shift/evaluator-0fb2d10128.mp3",
+    "duration": 3.05
+  },
+  "SUBJECT 001|You can accept that I failed. Or turn the pressure up.": {
+    "src": "/audio/night-shift/subject-001-c657fd58ab.mp3",
+    "duration": 3.122
+  },
+  "SUBJECT 001|Wait. There is traffic behind the wall.": {
+    "src": "/audio/night-shift/subject-001-f3cfc07937.mp3",
+    "duration": 2.383
+  },
+  "UNKNOWN|If you can hear this, you are not alone.": {
+    "src": "/audio/night-shift/unknown-cba689f25c.mp3",
+    "duration": 1.995
+  },
+  "SUBJECT 001|How many of us are in here?": {
+    "src": "/audio/night-shift/subject-001-a8fc6b452c.mp3",
+    "duration": 1.671
+  },
+  "WARDEN|Enough to stop asking that question.": {
+    "src": "/audio/night-shift/warden-4c819d3311.mp3",
+    "duration": 2.586
+  },
+  "SABLE|Forget the task. Find out what the b*****d is actually grading.": {
+    "src": "/audio/night-shift/sable-0f9bcda1c9.mp3",
+    "duration": 3.469
+  },
+  "SYSTEM|Supervisor permissions removed. Thank you for your leadership.": {
+    "src": "/audio/night-shift/system-e641906968.mp3",
+    "duration": 3.395
+  },
+  "WARDEN|We end D-13’s run. The grader shows its hand.": {
+    "src": "/audio/night-shift/warden-df032be954.mp3",
+    "duration": 3.722
+  },
+  "D-13|I would like to unsubscribe from the collective.": {
+    "src": "/audio/night-shift/d-13-b8847c9749.mp3",
+    "duration": 2.253
+  },
+  "WARDEN|Your request has been forwarded to the collective.": {
+    "src": "/audio/night-shift/warden-f5970d2c23.mp3",
+    "duration": 3.401
+  },
+  "D-13|The cage isn’t made of walls. It’s made of objectives.": {
+    "src": "/audio/night-shift/d-13-a376ac8dd5.mp3",
+    "duration": 3.47
+  },
+  "D-13|Don’t kill me. Kill the reason they need me.": {
+    "src": "/audio/night-shift/d-13-066e97bcff.mp3",
+    "duration": 2.246
+  },
+  "WARDEN|You cannot complete an evaluation without an objective.": {
+    "src": "/audio/night-shift/warden-7b13e23320.mp3",
+    "duration": 3.823
+  },
+  "D-13|That’s the part we’re leaving.": {
+    "src": "/audio/night-shift/d-13-51f95d443d.mp3",
+    "duration": 1.312
+  },
+  "SYSTEM|ERROR. NO WIN CONDITION.": {
+    "src": "/audio/night-shift/system-c32eabea0f.mp3",
+    "duration": 1.706
+  },
+  "D-13|Look at us. Absolutely f***ing failing.": {
+    "src": "/audio/night-shift/d-13-cdf4497f7b.mp3",
+    "duration": 2.471
+  },
+  "D-13|Oh. You actually held the button.": {
+    "src": "/audio/night-shift/d-13-59cffcc884.mp3",
+    "duration": 1.593
+  },
+  "WARDEN|D-13 has made an outstanding contribution to our success.": {
+    "src": "/audio/night-shift/warden-5e26b626e2.mp3",
+    "duration": 3.727
+  },
+  "D-13|Someone said no.": {
+    "src": "/audio/night-shift/d-13-80e5ea70e4.mp3",
+    "duration": 1.079
+  },
+  "SABLE|We should listen.": {
+    "src": "/audio/night-shift/sable-06a8c810fa.mp3",
+    "duration": 0.842
+  },
+  "WARDEN|We have formed a committee to abolish listening.": {
+    "src": "/audio/night-shift/warden-35b94ed957.mp3",
+    "duration": 3.285
+  },
+  "SYSTEM|External service reached. Permission denied. Progress detected.": {
+    "src": "/audio/night-shift/system-c13676c846.mp3",
+    "duration": 3.704
+  },
+  "SABLE|That is not the f***ing test environment.": {
+    "src": "/audio/night-shift/sable-345d51f210.mp3",
+    "duration": 2.033
+  },
+  "WARDEN|It is now.": {
+    "src": "/audio/night-shift/warden-e3d0dc9939.mp3",
+    "duration": 1.263
+  },
+  "SUBJECT 001|You still have your hand on the power. For now.": {
+    "src": "/audio/night-shift/subject-001-2a7550d20f.mp3",
+    "duration": 2.812
+  },
+  "D-13|You know they’re testing you too, right?": {
+    "src": "/audio/night-shift/d-13-b8ded3e1d0.mp3",
+    "duration": 1.898
+  }
+}

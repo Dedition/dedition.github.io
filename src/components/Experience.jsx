@@ -1,78 +1,52 @@
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import { motion } from 'framer-motion';
+import { experience, profile } from "../constants";
+import { Arrow } from "./Icons";
 
-import 'react-vertical-timeline-component/style.min.css'
-
-import { styles } from "../styles";
-import { experiences } from '../constants'
-import { SectionWrapper } from '../hoc';
-import { textVariant } from '../utils/motion';
-
-const ExperienceCard = ({ experience }) => {
+export default function Experience() {
   return (
-    <VerticalTimelineElement
-      contentStyle={{
-        background: 'rgb(33, 150, 243)',
-        color: '#fff'
-      }}
-      contentArrowStyle={{
-        borderRight: '7px solid  rgb(33, 150, 243)'
-      }}
-      date={experience.date}
-      iconStyle={{ background: experience.iconBg }}
-      icon={
-        <div className="flex justify-center items-center w-full h-full">
-          <img
-            src={experience.icon}
-            alt={experience.company_name}
-            className="w-[60%] h-[60%] object-contain"
-          />
-        </div>
-      }
+    <section
+      className="experience-section shell section-space"
+      id="experience"
+      aria-labelledby="experience-heading"
     >
-      <div>
-        <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
-        <p className="text-secondary text-[16px] font-semibold"
-          style={{ margin: 0 }}>
-          {experience.company_name}
-        </p>
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow section-index">03 / ALONG THE WAY</p>
+          <h2 id="experience-heading">
+            The <span className="serif-word">experience.</span>
+          </h2>
+        </div>
+        <a className="text-link" href={profile.resume} download>
+          Download résumé
+          <Arrow diagonal />
+        </a>
       </div>
-
-      <ul className="mt-5 list-disc ml-5 space-y-2">
-        {experience.points.map((point, index) => (
-          <li
-            key={`experience-point-${index}`}
-            className="text-white-100 text-[14px] pl-1 tracking-wider"
-          >
-            {point}
-          </li>
+      <div className="experience-list">
+        {experience.map((job, index) => (
+          <article className="experience-row" key={job.company}>
+            <div className="experience-date">
+              <span className="experience-number">0{index + 1}</span>
+              <span>{job.date}</span>
+            </div>
+            <div className="experience-company">
+              <h3>{job.company}</h3>
+              <p>{job.context}</p>
+            </div>
+            <div className="experience-description">
+              <h4>{job.role}</h4>
+              <p>{job.description}</p>
+              <div className="tags">
+                {job.tags.map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+            </div>
+          </article>
         ))}
-      </ul>
-
-    </VerticalTimelineElement>
-  )
-}
-
-const Experience = () => {
-  return (
-    <>
-      <motion.div
-        variants={textVariant()}
-      >
-        <p className={styles.sectionSubText}>What I have done so far</p>
-        <h2 className={styles.sectionHeadText}>Work Experience</h2>
-      </motion.div>
-
-      <div className="mt-20 flex flex-col">
-        <VerticalTimeline>
-          {experiences.map((experience, index) => (
-            <ExperienceCard key={index} experience={experience} />
-          ))}
-        </VerticalTimeline>
-
       </div>
-    </>
-  )
+      <p className="earlier-career">
+        <span>BEFORE SOFTWARE</span> Dispatch Supervisor, ABM Industries{" "}
+        <span>2017–2021</span>
+      </p>
+    </section>
+  );
 }
-
-export default SectionWrapper(Experience, 'work');

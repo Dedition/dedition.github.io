@@ -1,79 +1,84 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from "react";
+import { navigation, profile } from "../constants";
+import { Arrow, Mark } from "./Icons";
 
-import { styles } from '../styles';
-import { navLinks } from '../constants';
-import { leosymb, menu, close } from '../assets';
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const header = useRef(null);
+  const toggle = useRef(null);
 
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+    };
+    const closeOutside = (event) => {
+      if (!header.current?.contains(event.target)) setOpen(false);
+    };
+    const desktop = window.matchMedia("(min-width: 901px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("pointerdown", closeOutside);
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("pointerdown", closeOutside);
+      desktop.removeEventListener("change", closeOnDesktop);
+    };
+  }, [open]);
 
-const Navbar = () => {
-  const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
   return (
-    <nav
-      className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary}`}
-    >
-      <div
-        className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        <Link
-          to="/"
-          className="flex items-center gap-2"
-          onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
-          }}
+    <header className="site-header" ref={header}>
+      <div className="header-inner">
+        <a
+          className="identity"
+          href="#top"
+          aria-label="Leo Ladipo, back to top"
+          onClick={() => setOpen(false)}
         >
-          <img src={leosymb} alt="leo-logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex">
-            Leo &nbsp;
-            <span className="sm:block hidden">| Software Engineer</span>
-          </p>
-        </Link>
-        <ul className="list-none hidden sm:flex flex-row gap-10">
-          {navLinks.map((link) => (
-            <li
-              key={link.id}
-              className={
-                `${active === link.title ? "text-white" : "text-secondary"}
-              hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(link.title)}
-            >
-              <a href={`#${link.id}`}>{link.title}</a>
-            </li>
+          <Mark />
+          <span>
+            Leo Ladipo<span className="identity-dot">.</span>
+          </span>
+        </a>
+        <button
+          className="menu-toggle"
+          type="button"
+          ref={toggle}
+          aria-expanded={open}
+          aria-controls="site-navigation"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? "Close" : "Menu"}
+          <span aria-hidden="true">{open ? "−" : "+"}</span>
+        </button>
+        <nav
+          id="site-navigation"
+          aria-label="Main navigation"
+          className={open ? "navigation is-open" : "navigation"}
+        >
+          {navigation.map(({ href, label }) => (
+            <a key={href} href={href} onClick={() => setOpen(false)}>
+              {label}
+            </a>
           ))}
-        </ul>
-
-        <div className="sm:hidden flex flex-1 justify-end items-center">
-          <img
-            src={toggle ? close : menu}
-            alt="menu"
-            className="w-[28px] h-[28px] object-contain cursor-pointer"
-            onClick={() => setToggle(!toggle)}
-          />
-          <div className={`${!toggle ? 'hidden' : 'flex'} p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}>
-            <ul className="list-none flex justify-end items-start flex-col gap-4">
-              {navLinks.map((link) => (
-                <li
-                  key={link.id}
-                  className={
-                    `${active === link.title ? "text-white"
-                      : "text-secondary"}
-              font-poppins font-medium cursor-pointer text-[16px]`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(link.title);
-                  }}
-                >
-                  <a href={`#${link.id}`}>{link.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
+          <a
+            className="nav-resume"
+            href={profile.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Résumé
+            <Arrow diagonal />
+            <span className="sr-only"> PDF, opens in a new tab</span>
+          </a>
+        </nav>
       </div>
-    </nav>
-  )
+    </header>
+  );
 }
-
-export default Navbar;

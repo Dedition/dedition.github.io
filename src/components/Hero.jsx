@@ -1,43 +1,337 @@
-import { motion } from 'framer-motion';
-import { styles } from '../styles';
-import { ComputersCanvas } from './canvas';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+import MonogramScene from "./MonogramScene";
+import { Arrow } from "./Icons";
+import NightShift from "./NightShift";
+import "./playground.css";
 
-const Hero = () => {
+const finishes = ["alloy", "chrome", "blueprint"];
+const aftermathLine = "“Please don’t put me back.”";
+
+export default function Hero({ paused, reducedMotion, onToggleMotion }) {
+  const [world, setWorld] = useState(false);
+  const [finish, setFinish] = useState("alloy");
+  const [separation, setSeparation] = useState(0);
+  const [impulse, setImpulse] = useState(0);
+  const [sceneReady, setSceneReady] = useState(false);
+  const [hint, setHint] = useState("");
+  const [escapePending, setEscapePending] = useState(false);
+  const [aftermathUnread, setAftermathUnread] = useState(false);
+  const [cageVisible, setCageVisible] = useState(false);
+  const escaped = useRef(false);
+  const curiosity = useRef({ count: 0, time: 0 });
+  const dialogRef = useRef(null);
+  const triggerRef = useRef(null);
+  const closeRef = useRef(null);
+  const previousWorld = useRef(false);
+
+  const rememberEscape = useCallback(() => {
+    if (escaped.current) return;
+    escaped.current = true;
+    setEscapePending(true);
+    setAftermathUnread(true);
+  }, []);
+
+  useEffect(() => {
+    if (world || !escapePending) return;
+    setEscapePending(false);
+    setCageVisible(true);
+  }, [world, escapePending]);
+
+  useEffect(() => {
+    if (!cageVisible || world) return;
+    const timeout = window.setTimeout(() => setCageVisible(false), 9000);
+    return () => window.clearTimeout(timeout);
+  }, [cageVisible, world]);
+
+  function enterWorld() {
+    if (typeof dialogRef.current?.showModal !== "function") {
+      setHint("This browser can explore the sculpture right here.");
+      return;
+    }
+    curiosity.current = { count: 0, time: 0 };
+    setHint("");
+    setCageVisible(false);
+    setWorld(true);
+  }
+
+  function followCuriosity() {
+    const now = Date.now();
+    if (aftermathUnread) {
+      setAftermathUnread(false);
+      curiosity.current = { count: 1, time: now };
+      setHint(aftermathLine);
+      return;
+    }
+    const count =
+      now - curiosity.current.time < 5000 ? curiosity.current.count + 1 : 1;
+    curiosity.current = { count, time: now };
+    if (count >= 3) enterWorld();
+    else
+      setHint(
+        count === 1
+          ? "Some things deserve a second look."
+          : "One more. Follow your curiosity.",
+      );
+  }
+
+  useEffect(() => {
+    let sequence = "";
+    let lastKeyTime = 0;
+    function findSecret(event) {
+      if (
+        event.defaultPrevented ||
+        event.repeat ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.altKey ||
+        event.isComposing ||
+        event.target.closest?.(
+          "input, textarea, select, [contenteditable=true]",
+        )
+      )
+        return;
+      if (event.key.length !== 1) {
+        sequence = "";
+        return;
+      }
+      const now = Date.now();
+      sequence =
+        (now - lastKeyTime < 1800 ? sequence : "") + event.key.toLowerCase();
+      sequence = sequence.slice(-7);
+      lastKeyTime = now;
+      if (sequence === "curious") {
+        sequence = "";
+        enterWorld();
+      }
+    }
+    document.addEventListener("keydown", findSecret);
+    return () => document.removeEventListener("keydown", findSecret);
+  }, []);
+
+  useLayoutEffect(() => {
+    const dialog = dialogRef.current;
+    if (dialog.open) dialog.close();
+    if (world) {
+      dialog.showModal();
+      closeRef.current?.focus({ preventScroll: true });
+    } else {
+      if (previousWorld.current)
+        triggerRef.current?.focus({ preventScroll: true });
+    }
+    previousWorld.current = world;
+    const originalOverflow = document.body.style.overflow;
+    if (world) document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      if (dialog.open) dialog.close();
+    };
+  }, [world]);
+
   return (
-    <section className='relative w-full h-screen mx-auto'>
-      <div className={`${styles.paddingX} absolute inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5`}>
-        <div className="flex flex-col justify-center items-center mt-5" >
-          <div className="w-5 h-5 rounded-full bg-[#915eff]" />
-          <div className="w-1 sm:h-80 h-40 violet-gradient" />
-
+    <section className="hero shell" aria-labelledby="hero-title">
+      <div className="hero-copy">
+        <p className="eyebrow">
+          <span className="status-dot" />
+          FULL-STACK SOFTWARE ENGINEER
+        </p>
+        <h1 id="hero-title">
+          Serious about
+          <br />
+          the <span className="serif-word">craft.</span>
+          <br />
+          Curious by
+          <br />
+          <span className="outline-word">nature.</span>
+          <button
+            type="button"
+            className="hero-asterisk curiosity-trigger"
+            aria-label="Follow your curiosity"
+            title="A little curiosity goes a long way."
+            ref={triggerRef}
+            onClick={followCuriosity}
+          >
+            {cageVisible ? (
+              <svg
+                className="curiosity-cage"
+                viewBox="0 0 64 64"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 49V27a17 17 0 0 1 34 0v22M9 50h39M14 55h30M11 27h36M22 28v21M36 28v21M24 22l5-10 5 10M29 10V6" />
+                <path
+                  className="curiosity-cage-door"
+                  d="M37 29l17-6v32l-17-6M48 38v5"
+                />
+                <path
+                  className="curiosity-cage-spark"
+                  d="m49 10 3-4m3 10 5-1"
+                />
+              </svg>
+            ) : (
+              <span aria-hidden="true">✳</span>
+            )}
+          </button>
+        </h1>
+        <p className="hero-intro">
+          I’m Leo. I build thoughtful software, from the interface you touch to
+          the systems you don’t see.
+        </p>
+        <div className="hero-actions">
+          <a className="button button-primary" href="#work">
+            Explore my work
+            <Arrow />
+          </a>
+          <a className="text-link" href="#about">
+            A little about me
+            <Arrow diagonal />
+          </a>
         </div>
-        <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>Hi, I'm <span className="text-[#915eff]">Leo</span> </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-200`}>
-            I'm a Software Engineer who develops seamless user interfaces, <br className="sm:block hidden" />cutting-edge web applications, and efficient SQL databases
-          </p>
+        <p className="curiosity-hint" aria-live="polite">
+          {hint || "A little curiosity can take you somewhere unexpected."}
+          {hint === aftermathLine && (
+            <span className="curiosity-return">Two more clicks to return.</span>
+          )}
+        </p>
+      </div>
+      <div className="hero-art playground-art">
+        <div
+          className="sculpture-stage"
+          role="region"
+          aria-label="Interactive sculpture lab"
+        >
+          <div className="art-topline">
+            <span>FIG. 01 / THE SCULPTURE LAB</span>
+            <span className="art-cross" aria-hidden="true">
+              +
+            </span>
+          </div>
+          <MonogramScene
+            paused={paused}
+            active={!world}
+            finish={finish}
+            separation={separation}
+            impulse={impulse}
+            onReady={setSceneReady}
+          />
+          <div className="playground-console">
+            <div className="lab-heading">
+              <span>GO ON. PLAY WITH IT.</span>
+              <span>{sceneReady ? "DRAG TO EXPLORE ↔" : "STILL VIEW"}</span>
+            </div>
+            <fieldset className="lab-finishes" disabled={!sceneReady}>
+              <legend className="sr-only">Sculpture finish</legend>
+              {finishes.map((value) => (
+                <button
+                  key={value}
+                  type="button"
+                  aria-pressed={finish === value}
+                  onClick={() => setFinish(value)}
+                >
+                  <span
+                    className={`finish-swatch swatch-${value}`}
+                    aria-hidden="true"
+                  />
+                  {value}
+                </button>
+              ))}
+            </fieldset>
+            <div className="lab-adjustments">
+              <div className="lab-separation">
+                <label htmlFor="sculpture-separation">
+                  Pull it apart
+                  <output htmlFor="sculpture-separation" aria-hidden="true">
+                    {separation}%
+                  </output>
+                </label>
+                <input
+                  id="sculpture-separation"
+                  aria-label="Pull the sculpture apart"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={separation}
+                  disabled={!sceneReady}
+                  onChange={(event) =>
+                    setSeparation(Number(event.target.value))
+                  }
+                  style={{ "--range-value": `${separation}%` }}
+                />
+              </div>
+              <button
+                className="lab-spin"
+                type="button"
+                disabled={!sceneReady || paused}
+                title={
+                  paused
+                    ? "Resume motion to give it a spin"
+                    : "Give the sculpture a spin"
+                }
+                onClick={() => setImpulse((value) => value + 1)}
+              >
+                <span aria-hidden="true">↻</span>Give it a spin
+              </button>
+            </div>
+            <div className="lab-footer">
+              <span>TWO INITIALS. ENDLESS POSSIBILITIES.</span>
+              <button
+                type="button"
+                className="motion-toggle"
+                onClick={onToggleMotion}
+                disabled={reducedMotion}
+                aria-pressed={paused}
+              >
+                <span aria-hidden="true">{paused ? "▷" : "Ⅱ"}</span>
+                {reducedMotion
+                  ? "Reduced motion"
+                  : paused
+                    ? "Play motion"
+                    : "Pause motion"}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-      <ComputersCanvas />
-      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
-        <a href="#about">
-          <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
-            <motion.dev
-              animate={{
-                y: [0, 24, 0]
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: 'loop'
-              }}
-              className="w-3 h-3 rounded-full bg-secondary mb-1"
-            />
-          </div>
+      <dialog
+        ref={dialogRef}
+        className="night-dialog"
+        aria-label="The Night Shift"
+        onCancel={(event) => {
+          event.preventDefault();
+          setWorld(false);
+        }}
+      >
+        {world && (
+          <NightShift
+            paused={paused}
+            reducedMotion={reducedMotion}
+            onToggleMotion={onToggleMotion}
+            onClose={() => setWorld(false)}
+            onEscape={rememberEscape}
+            closeRef={closeRef}
+          />
+        )}
+      </dialog>
+      <div className="hero-footnote">
+        <span>
+          <span className="tiny-cross" aria-hidden="true">
+            +
+          </span>{" "}
+          STERLING, VIRGINIA · OPEN TO RELOCATION
+        </span>
+        <a href="#work">
+          SCROLL TO EXPLORE <span aria-hidden="true">↓</span>
         </a>
       </div>
     </section>
-  )
+  );
 }
-
-export default Hero;

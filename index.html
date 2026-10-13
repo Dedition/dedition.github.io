@@ -1,13 +1,111 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/blackl.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leo | Portfolio </title>
+    <meta name="theme-color" content="#171815" />
+    <meta
+      name="description"
+      content="Leo Ladipo is a full-stack software engineer in Sterling, Virginia. Explore his work at BetterHelp, the independent product InBalance, and the thinking behind the code."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Leo Ladipo — Software, with intention."
+    />
+    <meta
+      property="og:description"
+      content="Thoughtful software. A curious mind. Selected work and experiments by full-stack software engineer Leo Ladipo."
+    />
+    <meta property="og:url" content="https://dedition.github.io/" />
+    <meta
+      property="og:image"
+      content="https://dedition.github.io/social-preview.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://dedition.github.io/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      body {
+        margin: 0;
+        background: #171815;
+        color: #eeeee6;
+      }
+      .boot-fallback {
+        box-sizing: border-box;
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 12vh 24px;
+        font:
+          16px/1.8 Arial,
+          sans-serif;
+      }
+      .boot-fallback h1 {
+        font-size: clamp(38px, 8vw, 72px);
+        line-height: 1.05;
+        letter-spacing: -2px;
+        margin: 24px 0;
+      }
+      .boot-fallback p {
+        max-width: 550px;
+        margin-bottom: 24px;
+      }
+      .boot-fallback > p:first-child {
+        font: 11px/1.5 monospace;
+        letter-spacing: 2px;
+        color: #ff794f;
+      }
+      .boot-links {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .boot-links a,
+      .boot-links button {
+        color: #ff794f;
+        text-decoration: underline;
+        font: inherit;
+        border: 0;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+      }
+      .boot-links a:focus-visible,
+      .boot-links button:focus-visible {
+        outline: 2px solid #ff794f;
+        outline-offset: 5px;
+      }
+    </style>
+    <title>Leo Ladipo — Software, with intention.</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <main class="boot-fallback">
+        <p>LEO LADIPO / SOFTWARE ENGINEER</p>
+        <h1>Thoughtful software.<br />A curious mind.</h1>
+        <p>
+          I’m Leo, a full-stack software engineer in Sterling, Virginia. My work
+          spans healthcare software at BetterHelp and InBalance, an independent
+          mobile product.
+        </p>
+        <p>
+          The interactive portfolio is loading. If it doesn’t appear, you can
+          still explore my work or get in touch below.
+        </p>
+        <div class="boot-links">
+          <a href="/">Reload portfolio ↗</a>
+          <a href="/Leo-Ladipo-Resume.pdf">Read my résumé ↗</a>
+          <a href="https://github.com/Dedition">GitHub ↗</a>
+          <a href="mailto:L.ladipo@hotmail.com">Email Leo ↗</a>
+        </div>
+      </main>
+    </div>
+    <noscript
+      ><p class="boot-fallback">
+        JavaScript is disabled. The résumé, GitHub, and email links above remain
+        available.
+      </p></noscript
+    >
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
